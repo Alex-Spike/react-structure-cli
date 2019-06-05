@@ -3,8 +3,11 @@ import path from 'path';
 import renameFilesRecursive from './renameFilesRecursive';
 
 export default (moduleName) => {
-  console.log(moduleName, 'moduleName');
   try {
+    if (!moduleName) {
+      throw new Error('Missing required argument `module name`')
+    }
+
     const modulePath = path.resolve(new URL(import.meta.url).pathname, '../../templates/module/default');
     const newModulePath = `${process.cwd()}/${moduleName}`;
 

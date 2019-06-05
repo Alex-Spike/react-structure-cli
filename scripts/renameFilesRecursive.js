@@ -27,6 +27,16 @@ function renameFilesRecursive(dir, moduleName, type = '') {
           const newModuleName = type === 'components' ? `${moduleName}Component.js` : `${moduleName}Container.js`;
 
           fs.renameSync(dataPath, dataPath.replace(/(?!.*\/).+/, newModuleName));
+
+          return;
+        }
+
+        if (type === 'assets') {
+          const assetName = `${moduleName}.scss`;
+
+          fs.renameSync(dataPath, dataPath.replace(/(?!.*\/).+/, assetName));
+
+          return;
         }
       }
     });
