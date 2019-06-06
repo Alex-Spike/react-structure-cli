@@ -1,7 +1,7 @@
 {
   "name": "react-structure-cli",
   "version": "0.0.4",
-  "description": "description",
+  "description": "A small cli for react that generates a default module and components structure.",
   "main": "index.js",
   "bin": {
     "rsc": "bin/index.js"
@@ -12,6 +12,10 @@
     "cli",
     "structure"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alex-Spike/react-structure-cli"
+  },
   "author": "Alexey Nikiforov",
   "license": "MIT",
   "dependencies": {
