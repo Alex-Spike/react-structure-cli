@@ -8,7 +8,7 @@ export default (moduleName) => {
       throw new Error('Missing required argument `module name`')
     }
 
-    const modulePath = path.resolve(__dirname, '../templates/module/default');
+    const modulePath = path.join(__dirname, '../templates/module/default');
     const newModulePath = `${process.cwd()}/${moduleName}`;
 
     if (fs.existsSync(newModulePath)) {

@@ -9,7 +9,7 @@ function camelCase(string) {
 function renameFilesRecursive(dir, moduleName, type = '') {
   try {
     fs.readdirSync(dir).forEach(data => {
-      const dataPath = path.resolve(dir, data);
+      const dataPath = path.join(dir, data);
       const isDirectory = fs.statSync(dataPath).isDirectory();
 
       if (isDirectory) {

@@ -3,7 +3,7 @@ import path from 'path';
 
 export default () => {
   try {
-    const modulePath = path.resolve(__dirname, '../templates/module');
+    const modulePath = path.join(__dirname, '../templates/module');
 
     if (fs.existsSync(`${modulePath}/custom`)) {
       fs.removeSync(`${modulePath}/custom`);
