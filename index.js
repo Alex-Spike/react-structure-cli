@@ -16,5 +16,5 @@ program
   .option('-r, --reset', 'Reset to default module structure')
   .action(moduleAction);
 
-program.version('0.0.4');
+program.version('0.1.0');
 program.parse(process.argv);
