@@ -1,6 +1,6 @@
 {
   "name": "react-structure-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "description",
   "main": "index.js",
   "bin": {
@@ -11,13 +11,6 @@
     "react-structure-cli",
     "cli",
     "structure"
-  ],
-  "files": [
-    "actions",
-    "bin",
-    "scripts",
-    "templates",
-    "index.js"
   ],
   "author": "Alexey Nikiforov",
   "license": "MIT",
