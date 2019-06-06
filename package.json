@@ -12,6 +12,13 @@
     "cli",
     "structure"
   ],
+  "files": [
+    "actions",
+    "bin",
+    "scripts",
+    "templates",
+    "index.js"
+  ],
   "author": "Alexey Nikiforov",
   "license": "MIT",
   "dependencies": {

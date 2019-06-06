@@ -8,11 +8,11 @@ export default (moduleName) => {
       throw new Error('Missing required argument `module name`')
     }
 
-    const modulePath = path.resolve(new URL(import.meta.url).pathname, '../../templates/module/default');
+    const modulePath = path.resolve(__dirname, '../templates/module/default');
     const newModulePath = `${process.cwd()}/${moduleName}`;
 
     if (fs.existsSync(newModulePath)) {
-      throw new Error(`Module ${moduleName} allready exists at ${newModulePath}`);
+      throw new Error(`Module ${moduleName} already exists at ${newModulePath}`);
     }
 
     console.log(`Creating ${moduleName} module`.cyan);

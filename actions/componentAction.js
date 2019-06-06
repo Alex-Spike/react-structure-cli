@@ -7,7 +7,7 @@ export default (componentName, cmd) => {
     const { stateless, pure, normal } = cmd;
     const newComponentName = `${componentName}Component`;
     const typeCmp = stateless && 'stateless' || pure && 'pure' || normal && 'normal';
-    const componentPath = path.resolve(new URL(import.meta.url).pathname, `../../templates/components/${typeCmp}.js`);;
+    const componentPath = path.resolve(__dirname, `../templates/components/${typeCmp}.js`);;
     const newComponentPath = `${process.cwd()}/${newComponentName}.js`;
 
 
