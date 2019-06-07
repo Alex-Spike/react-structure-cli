@@ -7,8 +7,13 @@ export default (moduleName) => {
     if (!moduleName) {
       throw new Error('Missing required argument `module name`')
     }
+    let isCustomModule = false;
 
-    const modulePath = path.join(__dirname, '../templates/module/default');
+    if (fs.existsSync(path.join(__dirname, '../templates/custom'))) {
+      isCustomModule = true;
+    }
+
+    const modulePath = path.join(__dirname, `../templates/module/${isCustomModule ? 'custom' : 'default'}`);
     const newModulePath = `${process.cwd()}/${moduleName}`;
 
     if (fs.existsSync(newModulePath)) {
@@ -17,9 +22,9 @@ export default (moduleName) => {
 
     console.log(`Creating ${moduleName} module`.cyan);
 
-    fs.copySync(modulePath, newModulePath);
-
-    renameFilesRecursive(newModulePath, moduleName);
+    fs.copy(modulePath, newModulePath, () => {
+      renameFilesRecursive(newModulePath, moduleName);
+    });
 
     console.log(`${moduleName} module was created successfully`.green);
   } catch (err) {
