@@ -7,13 +7,13 @@ export default (moduleName) => {
     if (!moduleName) {
       throw new Error('Missing required argument `module name`')
     }
-    let isCustomModule = false;
+    let hasCustomModule = false;
 
-    if (fs.existsSync(path.join(__dirname, '../templates/custom'))) {
-      isCustomModule = true;
+    if (fs.existsSync(path.join(__dirname, '../templates/module/custom'))) {
+      hasCustomModule = true;
     }
 
-    const modulePath = path.join(__dirname, `../templates/module/${isCustomModule ? 'custom' : 'default'}`);
+    const modulePath = path.join(__dirname, `../templates/module/${hasCustomModule ? 'custom' : 'default'}`);
     const newModulePath = `${process.cwd()}/${moduleName}`;
 
     if (fs.existsSync(newModulePath)) {
