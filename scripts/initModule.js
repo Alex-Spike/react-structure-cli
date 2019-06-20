@@ -1,18 +1,18 @@
 import fs from 'fs-extra';
-import path from 'path';
+import paths from '../bin/paths';
+import copyFolder from '../bin/copyFolder';
 
-export default () => {
+export default async () => {
   try {
-    const customModulePath = process.cwd();
-    const modulePath = path.join(__dirname, '../templates/module');
-
-    if (fs.existsSync(`${modulePath}/custom`)) {
-      throw new Error(`Custom module was initialized`);
+    if (fs.existsSync(paths.customModule)) {
+      throw new Error(`Custom module has been already initialized`);
     }
+
+    const customModulePath = fs.realpathSync(process.cwd());
 
     console.log(`Initializing custom module`.cyan);
 
-    fs.copySync(customModulePath, `${modulePath}/custom`);
+    copyFolder(customModulePath, paths.customModule);
 
     console.log(`Custom module was initialized successfully`.green);
   } catch (err) {

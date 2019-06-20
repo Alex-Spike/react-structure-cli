@@ -24,7 +24,7 @@ function renameFilesRecursive(dir, moduleName, type = '') {
         });
 
         if (type === 'components' || type === 'containers') {
-          const newModuleName = type === 'components' ? `${moduleName}Component.js` : `${moduleName}Container.js`;
+          const newModuleName = (type === 'components') ? `${moduleName}Component.js` : `${moduleName}Container.js`;
 
           fs.renameSync(dataPath, dataPath.replace(/(?!.*\/).+/, newModuleName));
 
@@ -43,6 +43,6 @@ function renameFilesRecursive(dir, moduleName, type = '') {
   } catch (err) {
     console.log(`${err}`.red);
   }
-};
+}
 
 export default renameFilesRecursive;

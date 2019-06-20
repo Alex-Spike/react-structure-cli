@@ -1,5 +1,6 @@
 import fs from 'fs-extra';
-import path from 'path';
+import paths from '../bin/paths';
+import copyFolder from '../bin/copyFolder';
 import renameFilesRecursive from './renameFilesRecursive';
 
 export default (moduleName) => {
@@ -7,14 +8,15 @@ export default (moduleName) => {
     if (!moduleName) {
       throw new Error('Missing required argument `module name`')
     }
+
     let hasCustomModule = false;
 
-    if (fs.existsSync(path.join(__dirname, '../templates/module/custom'))) {
+    if (fs.existsSync(paths.customModule)) {
       hasCustomModule = true;
     }
 
-    const modulePath = path.join(__dirname, `../templates/module/${hasCustomModule ? 'custom' : 'default'}`);
-    const newModulePath = `${process.cwd()}/${moduleName}`;
+    const templateModulePath = hasCustomModule ? paths.customModule : paths.defaultModule;
+    const newModulePath = `${fs.realpathSync(process.cwd())}/${moduleName}`;
 
     if (fs.existsSync(newModulePath)) {
       throw new Error(`Module ${moduleName} already exists at ${newModulePath}`);
@@ -22,9 +24,9 @@ export default (moduleName) => {
 
     console.log(`Creating ${moduleName} module`.cyan);
 
-    fs.copy(modulePath, newModulePath, () => {
-      renameFilesRecursive(newModulePath, moduleName);
-    });
+    copyFolder(templateModulePath, newModulePath);
+
+    renameFilesRecursive(newModulePath, moduleName);
 
     console.log(`${moduleName} module was created successfully`.green);
   } catch (err) {
