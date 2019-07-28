@@ -58,9 +58,9 @@ Then run:
 
 ## Init custom module structure
 
->```rsc module [ModuleName] -i```
+>```rsc module -i```
 
->```rsc module [ModuleName] --init```
+>```rsc module --init```
 
 Firstly you need to create an empty folder and then move your own module structure to it.
 

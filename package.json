@@ -1,7 +1,7 @@
 {
   "name": "react-structure-cli",
-  "version": "1.0.0",
-  "description": "A small cli for react that generates a default module and components structure.",
+  "version": "1.0.1",
+  "description": "A small cli for react that generates a default or custom module and components structure.",
   "main": "index.js",
   "bin": {
     "rsc": "bin/index.js"
